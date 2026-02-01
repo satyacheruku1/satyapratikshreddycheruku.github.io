@@ -1,3 +1,36 @@
+// Typing effect for "i am into"
+const typedEl = document.querySelector('.typed');
+if (typedEl) {
+  const phrases = ['Embedded Systems.', 'RTOS.', 'Low-level Software.', 'Hardware-Software Integration.'];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const current = phrases[phraseIndex];
+    if (isDeleting) {
+      typedEl.textContent = current.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      typedEl.textContent = current.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    if (!isDeleting && charIndex === current.length) {
+      setTimeout(type, 2000);
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      setTimeout(type, 500);
+    } else {
+      setTimeout(type, isDeleting ? 50 : 100);
+    }
+  }
+
+  setTimeout(type, 500);
+}
+
 // Mobile navigation toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');

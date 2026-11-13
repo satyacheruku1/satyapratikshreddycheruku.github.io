@@ -358,9 +358,19 @@ section {
 }
 
 .education-placeholder {
-  aspect-ratio: 1;
   background: linear-gradient(135deg, var(--bg-elevated) 0%, rgba(224, 124, 76, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 100px;
+  padding: 1rem;
+}
+
+.education-placeholder img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .education-info {
